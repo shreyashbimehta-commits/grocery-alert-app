@@ -192,7 +192,7 @@ class GroceryAlertServer:
 
     async def handle_health(self, path, request_headers):
         if path == "/health":
-            return request_headers.raw_path, 200, Headers({"Content-Type": "text/plain"}), b"OK"
+            return 200, Headers({"Content-Type": "text/plain"}), b"OK"
         return None
 
     async def start(self):
