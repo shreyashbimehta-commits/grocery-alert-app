@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="32dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Son's Grocery Alert"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Service running in background"
+        android:layout_marginTop="4dp"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/item_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="What to buy?"
+        android:layout_marginTop="32dp"
+        android:inputType="text" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send to:"
+        android:layout_marginTop="24dp"
+        android:textSize="16sp" />
+
+    <RadioGroup
+        android:id="@+id/target_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp">
+
+        <RadioButton
+            android:id="@+id/target_mom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mom"
+            android:checked="true" />
+
+        <RadioButton
+            android:id="@+id/target_dad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dad"
+            android:layout_marginStart="16dp" />
+
+        <RadioButton
+            android:id="@+id/target_both"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Both"
+            android:layout_marginStart="16dp" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/send_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send Alert"
+        android:textSize="18sp"
+        android:layout_marginTop="24dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp" />
+
+</LinearLayout>

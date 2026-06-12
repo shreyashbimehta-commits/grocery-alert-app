@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: grocery-alert-server
+    runtime: python
+    region: oregon
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python server.py
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: 8765
