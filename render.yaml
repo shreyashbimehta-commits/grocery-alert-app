@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: grocery-alert-server
+    name: grocery-alert-app
     runtime: python
     region: oregon
     plan: free

@@ -28,7 +28,7 @@ class AlarmWebSocketService : Service() {
         // ═══════════════════════════════════════════════════════════════════
         // CHANGE THIS to your server's local network IP and port
         // ═══════════════════════════════════════════════════════════════════
-        const val SERVER_URL = "wss://grocery-alert-server.onrender.com"
+        const val SERVER_URL = "wss://grocery-alert-app.onrender.com"
 
         private const val BASE_DELAY_MS = 1_000L
         private const val MAX_DELAY_MS = 60_000L

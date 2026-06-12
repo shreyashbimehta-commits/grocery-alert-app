@@ -14,7 +14,7 @@ object MomWebSocketClient {
     // ═══════════════════════════════════════════════════════════════════
     // CHANGE THIS to your server's local network IP and port
     // ═══════════════════════════════════════════════════════════════════
-    const val SERVER_URL = "wss://grocery-alert-server.onrender.com"
+    const val SERVER_URL = "wss://grocery-alert-app.onrender.com"
 
     private val client = OkHttpClient.Builder()
         .readTimeout(30, TimeUnit.SECONDS)

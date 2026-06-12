@@ -26,7 +26,7 @@ class MomWebSocketService : Service() {
         private const val NOTIFICATION_ID = 9001
         private const val CHANNEL_ID = "mom_ws_channel"
         private const val ALARM_CHANNEL_ID = "mom_alarm_channel"
-        const val SERVER_URL = "wss://grocery-alert-server.onrender.com"
+        const val SERVER_URL = "wss://grocery-alert-app.onrender.com"
 
         private const val BASE_DELAY_MS = 1_000L
         private const val MAX_DELAY_MS = 60_000L

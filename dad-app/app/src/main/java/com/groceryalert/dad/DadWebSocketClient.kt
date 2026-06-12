@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit
 
 object DadWebSocketClient {
     private const val TAG = "DadWS"
-    const val SERVER_URL = "wss://grocery-alert-server.onrender.com"
+    const val SERVER_URL = "wss://grocery-alert-app.onrender.com"
 
     private val client = OkHttpClient.Builder()
         .readTimeout(30, TimeUnit.SECONDS)
