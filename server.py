@@ -8,6 +8,11 @@ from datetime import datetime, timezone
 import websockets
 from websockets.server import WebSocketServerProtocol
 
+def _is_open(ws):
+    if hasattr(ws, "open"):
+        return ws.open
+    return hasattr(ws, "state") and ws.state.name == "OPEN"
+
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
@@ -43,7 +48,7 @@ class GroceryAlertServer:
 
                 if msg_role in ("MOM", "DAD", "SON"):
                     old = self.clients.get(msg_role)
-                    if old is not None and old.open:
+                    if old is not None and _is_open(old):
                         logger.info(f"Replacing existing {msg_role} connection")
                         await old.close(1000, "Replaced by new connection")
                     self.clients[msg_role] = websocket
@@ -67,7 +72,7 @@ class GroceryAlertServer:
                             )
                             continue
                         ws = self.clients.get(target)
-                        if ws is not None and ws.open:
+                        if ws is not None and _is_open(ws):
                             payload = json.dumps(
                                 {
                                     "from": role,
@@ -137,7 +142,7 @@ class GroceryAlertServer:
                     delivered_any = False
                     for t in targets:
                         ws = self.clients.get(t)
-                        if ws is not None and ws.open:
+                        if ws is not None and _is_open(ws):
                             payload = json.dumps(
                                 {
                                     "from": role,
@@ -186,7 +191,7 @@ class GroceryAlertServer:
     async def broadcast_status(self):
         while True:
             await asyncio.sleep(30)
-            online = [r for r, ws in self.clients.items() if ws.open]
+            online = [r for r, ws in self.clients.items() if _is_open(ws)]
             logger.info(f"Connected clients: {online if online else 'none'}")
 
     async def start(self):
