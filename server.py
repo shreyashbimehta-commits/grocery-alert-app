@@ -7,7 +7,6 @@ from datetime import datetime, timezone
 
 import websockets
 from websockets.server import WebSocketServerProtocol
-from websockets.http import Headers
 
 logging.basicConfig(
     level=logging.INFO,
@@ -190,19 +189,12 @@ class GroceryAlertServer:
             online = [r for r, ws in self.clients.items() if ws.open]
             logger.info(f"Connected clients: {online if online else 'none'}")
 
-    async def handle_health(self, path, request_headers):
-        if path == "/health":
-            return 200, Headers({"Content-Type": "text/plain"}), b"OK"
-        return None
-
     async def start(self):
         async with websockets.serve(
             self.handle_client, HOST, PORT,
             ping_interval=20, ping_timeout=10,
-            process_request=self.handle_health,
         ):
             logger.info(f"Server listening on {HOST}:{PORT}")
-            logger.info(f"Health check at http://0.0.0.0:{PORT}/health")
             await asyncio.Future()
 
 
